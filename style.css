@@ -1,0 +1,125 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav{
+  height: 80px;
+  width: 100%;
+  background-color: #130f3c;
+}
+label.logo{
+  font-size: 2em;
+  padding: 0 100px;
+  line-height: 80px;
+  color: white;
+}
+label.logo:hover{
+  color: #f1cb0b;
+}
+nav ul{
+  float: right;
+  margin-right: 40px;
+}
+nav li{
+  display: inline-block;
+  margin: 0 8px;
+  line-height: 80px;
+}
+nav a{
+  color: white;
+  font-size: 18px;
+  padding: 7px 10px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+nav a.active,nav a:hover{
+  transition: .5s;
+  border: 1px solid #f1cb0b;
+}
+nav #icon{
+  color: white;
+  font-size: 30px;
+  float: right;
+  margin-right: 40px;
+  line-height: 80px;
+  cursor: pointer;
+  display: none;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    background-color: #c09575;
+    margin: -10px -10px 0px -10px;
+    height: 90px;
+    align-items: center;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    padding-bottom: 100px;
+}
+.image{
+    margin-right: 20px;
+    margin-left: 20px;
+    position: relative;
+    overflow: hidden;
+}
+i{
+  margin-right: 10px;
+}
+/*------------------------------------------------------------------------------------------------------------*/
+/*RESPONSIVE DESIGN*/
+
+
+@media (max-width: 1048px){
+  label.logo{
+    font-size: 32px;
+    padding-left: 60px;
+  }
+  nav ul{
+    margin-right: 0px;
+  }
+  nav a{
+    font-size: 17px;
+  }
+}
+@media (max-width: 909px){
+  nav #icon{
+    display: block;
+  }
+  nav ul{
+    position: fixed;
+    width: 50%;
+    min-width: 200px;
+    min-height: 370px;
+    height: 40%;
+    background: #130f3c;
+    top: 80px;
+    right: -100%;
+    text-align: center;
+    transition: all .5s;
+    z-index: 1;
+  }
+  nav li{
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav a{
+    font-size: 20px;
+  }
+  nav a.active,nav a:hover{
+    border: none;
+    color: #f1cb0b;
+  }
+  nav ul.active{
+    right: 0;
+  }
+}
