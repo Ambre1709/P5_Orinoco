@@ -1,131 +1,171 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<meta charset="utf-8" />
-		<script src="https://kit.fontawesome.com/84c6d20721.js" crossorigin="anonymous"></script>
-		<meta name="description" content="Vente d'oursons en peluche" />
-    	<link rel="stylesheet" href="style_teddy.css">
-    	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<!--bouton barre de nav-->
-    <script>
-      $(document).ready(function(){
-        $('#icon').click(function(){
-          $('ul').toggleClass('active');
-        });
-      });
-    </script>
+<head>
+	<meta charset="utf-8" />
+	<script src="https://kit.fontawesome.com/84c6d20721.js" crossorigin="anonymous"></script>
+	<meta name="description" content="Vente d'oursons en peluche" />
+	<link rel="stylesheet" href="style_teddy.css">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<!--bouton barre de nav-->
+	<script>
+		$(document).ready(function(){
+			$('#icon').click(function(){
+				$('ul').toggleClass('active');
+			});
+		});
+	</script>
 
-<!--bouton scroll top-->
-<script>
-  $(document).ready(function(){
-        $('#btnScrollToTop').click(function(){
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior:"smooth"
-  });
-    });
-        });
-</script>
-  </head>
-  <body>
-<!---------------------------------------HEADER------------------------------------------------>
-    <nav>
-      <label class="logo">Orinoco</label>
-      <ul>
-      	<li><a href="index.html"><i class="fas fa-home"></i>Accueil</a></li>
-        <li><a href="panier.html"><i class="fas fa-shopping-cart"></i>Panier</a></li>
-      </ul>
-      <label id="icon"><i class="fas fa-bars"></i></label>
-    </nav>
-<!--------------------------------Images couleurs-------------------------------------------->
-<div class="container">
-	<ul class="thumb">
-		<li><a href="images/teddy_3.jpg" target="imgBox"><img src="images/thumb_teddy_3.jpg"></a></li>
-		<li><a href="images/teddy_3_bleu.jpg" target="imgBox"><img src="images/thumb_teddy_3_bleu.jpg"></a></li>
-		<li><a href="images/teddy_3_rose.jpg" target="imgBox"><img src="images/thumb_teddy_3_rose.jpg"></a></li>
-	</ul>
-	<div class="imgBox"><img src="images/teddy_3.jpg"></div>
-</div>
-<!-----------------------------------Selection couleurs + panier--------------------------------------------->
-<div class="container_info">
-	<div class="info">
-  		<h3 class="tit" id="brand3">NOM</h3>
-  		<h4 id="price3">20</h4>
-  		<h4>€</h4>
+	<!--bouton scroll top-->
+	<script>
+		$(document).ready(function(){
+			$('#btnScrollToTop').click(function(){
+				window.scrollTo({
+					top: 0,
+					left: 0,
+					behavior:"smooth"
+				});
+			});
+		});
+	</script>
+</head>
+<body>
+	<!---------------------------------------HEADER------------------------------------------------>
+	<nav>
+		<label class="logo">Orinoco</label>
+		<ul>
+			<li><a href="index.html"><i class="fas fa-home"></i>Accueil</a></li>
+			<li><a class="iconShopping"><i class="fas fa-shopping-cart"></i>Panier</a></li>
+		</ul>
+		<label id="icon"><i class="fas fa-bars"></i></label>
+	</nav>
+	<!--------------------------------Images couleurs-------------------------------------------->
+	<div class="container">
+		<ul class="thumb">
+			<li><a href="images/teddy_3.jpg" target="imgBox"><img src="images/thumb_teddy_3.jpg"></a></li>
+			<li><a href="images/teddy_3_bleu.jpg" target="imgBox"><img src="images/thumb_teddy_3_bleu.jpg"></a></li>
+			<li><a href="images/teddy_3_rose.jpg" target="imgBox"><img src="images/thumb_teddy_3_rose.jpg"></a></li>
+		</ul>
+		<div class="imgBox"><img src="images/teddy_3.jpg"></div>
+	</div>
+	<!-----------------------------------Selection couleurs + panier--------------------------------------------->
+	<div class="container_info">
+		<div class="info">
+			<h3 class="tit" id="brand3">NOM</h3>
+			<h4 id="price3">20</h4>
+			<h4>€</h4>
+		</div>
+
+		<div class="inputs">
+			<input type="number" id="quantity3" name="quantity3" min="1" max="99" value="1">
+			<select id="color3" name="color3" onclick="deleteE('message3')">
+				<option value="color" disabled selected>Couleur</option>
+				<option value="Marron">Marron</option>
+				<option value="Marron">Bleu</option>
+				<option value="Marron">Rose</option>
+			</select>
+			<div>
+				<button class="addTo" onclick="add(3)">Ajouter <i class="fas fa-shopping-cart"></i></button>
+			</div>
+			<p id="message3"></p>
+		</div>
 	</div>
 
-<div class="inputs">
-  <input type="number" id="quantity3" name="quantity3" min="1" max="99" value="1">
-  <select id="color3" name="color3" onclick="deleteE('message3')">
-    <option value="color" disabled selected>Couleur</option>
-    <option value="Marron">Marron</option>
-    <option value="Marron">Bleu</option>
-    <option value="Marron">Rose</option>
-  </select>
-  <div>
-    <button class="addTo" onclick="add(3)">Ajouter <i class="fas fa-shopping-cart"></i></button>
-  </div>
-  <p id="message3"></p>
-</div>
-</div>
 
-
-<div class="cart">
-  <h3 class="tit">Mes articles</h3>
-  <ul id="items">
-    </ul>
-    <h3 id="total" style="text-align: right;">Total: 0 €</h3>
+	<div class="cart">
+		<h3 class="tit">Mes articles</h3>
+		<ul id="items">
+		</ul>
+		<h3 id="total" style="text-align: right;">Total: 0 €</h3>
+	</div>
 </div>
+<!-----------------------------------panier--------------------------------------------->
+<div class="cartBox">
+	<div class="cart1">
+		<i class="fa fa-close"></i>
+		<h1>Panier</h1>
+	</div>
 </div>
-<!-----------------------------------Selection couleurs + panier--------------------------------------------->
 <script>
-  var total= 0;
-  var i = 1;
-  var message = "Selectionner une couleur";
-  var itemCost = [];
+	window.onload = function(e){
+		//Cart Box
+		const iconShopping = document.querySelector('.iconShopping');
+		const cartCloseBtn = document.querySelector('.fa-close');
+		const cartBox = document.querySelector('.cartBox');
+		const brand = document.querySelector('#brand3');
+		iconShopping.addEventListener("click",function(){
+			cartBox.classList.add('active');
+		});
+		cartCloseBtn.addEventListener("click",function(){
+			cartBox.classList.remove('active');
+		});
 
-  function add(n){
-  		colorId = "color" + n;
-  		messageId = "message" + n;
-  		color = document.getElementById(colorId).value;
-  		if (color==="color"){
-  			document.getElementById(messageId).innerHTML = message;
-  			return 0;
-  		}
-  		brand = "brand" + n;
-  		priceId = "price" + n;
-  		quantityId = "quantity" + n;
-  		name = document.getElementById(brand).innerHTML;
-  		price = document.getElementById(priceId).innerHTML;
-  		quantity = document.getElementById(quantityId).value;
-  		var node = document.createElement("LI");
-  		item = "item"+i;
-  		node.setAttribute("id", item)
-  		itemCost[i-1] = Number(price) * Number(quantity);
-  		i += 1;
-  		var textnode = document.createTextNode(name+" "+quantity+" x "+price+" €, color: "+color);
-  		node.appendChild(textnode);
-  		document.getElementById("items").appendChild(node);
+		//localstorage ou sessionstorage
+		const addTo = document.getElementsByClassName('addTo');
+		let items = [];
+		for(let i=0; i<addTo.length; i++){
+			addTo[i].addEventListener("click",function(e){
+				console.log(brand);
+				if(typeof(Storage) !== 'undefined'){
+					let item = {
+						id:i+1,
+						name:brand,
+					};
+				}else{
+					alert('storage is not working on your browser');
+				}
+			});
 
-  		total += Number(price) * Number(quantity);
-  		document.getElementById("total").innerHTML = "Total: " + total.toFixed(2) + " €";
+		}
+	}
+	</script>
+	<!-----------------------------------Selection couleurs + panier--------------------------------------------->
+	<script>
+		var total= 0;
+		var i = 1;
+		var message = "Selectionner une couleur";
+		var itemCost = [];
+
+		function add(n){
+			colorId = "color" + n;
+			messageId = "message" + n;
+			color = document.getElementById(colorId).value;
+			if (color==="color"){
+				document.getElementById(messageId).innerHTML = message;
+				return 0;
+			}
+			brand = "brand" + n;
+			priceId = "price" + n;
+			quantityId = "quantity" + n;
+			name = document.getElementById(brand).innerHTML;
+			price = document.getElementById(priceId).innerHTML;
+			quantity = document.getElementById(quantityId).value;
+			var node = document.createElement("LI");
+			item = "item"+i;
+			node.setAttribute("id", item)
+			itemCost[i-1] = Number(price) * Number(quantity);
+			i += 1;
+			var textnode = document.createTextNode(name+" "+quantity+" x "+price+" €, color: "+color);
+			node.appendChild(textnode);
+			document.getElementById("items").appendChild(node);
+
+			total += Number(price) * Number(quantity);
+			document.getElementById("total").innerHTML = "Total: " + total.toFixed(2) + " €";
 //remove button
-  		document.getElementById(item).innerHTML += '<button onclick="deleItem('+"'"+item+"'"+')">x</button>';
-  }
+document.getElementById(item).innerHTML += '<button onclick="deleItem('+"'"+item+"'"+')">x</button>';
+}
 
-  function deleItem(eId){
-  	document.getElementById(eId).remove();
-  	n = Number(eId.slice(-1)) - 1;
-  	total -= itemCost[n];
-  	document.getElementById("total").innerHTML = "Total: " + total.toFixed(2) + " €";
-  }
+function deleItem(eId){
+	document.getElementById(eId).remove();
+	n = Number(eId.slice(-1)) - 1;
+	total -= itemCost[n];
+	document.getElementById("total").innerHTML = "Total: " + total.toFixed(2) + " €";
+}
 
-  function deleteE(eId) {
-  	document.getElementById(eId).innerHTML = ' ';
-  }
+function deleteE(eId) {
+	document.getElementById(eId).innerHTML = ' ';
+}
 </script>
 <!--------------------------------Images couleurs-------------------------------------------->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -136,7 +176,7 @@
 			$('.imgBox img').attr("src", $(this).attr("href"));
 		})
 	})
-	</script>
+</script>
 <!--------------------------------------------------------------------------------------->
 </body>
 </html>

@@ -158,12 +158,19 @@ ul.thumb li{
 #price1, #price2, #price3, #price4{
 	margin-right: 5px;
 }
-.inputs, input, select{
-	text-align: right;
-	border-radius: 10px;
+.inputs{
+	text-align: center;
+	border-radius: 2px;
 	margin-left: 10px;
 	margin-top: 10px;
 }
+input, select{
+  border: 1.5px solid #f1cb0b;
+  text-align: center;
+}
+
+
+/*cart add button*/
 button{
 	width: 100px;
 	height: 25px;
@@ -174,5 +181,67 @@ button{
 }
 button:hover{
 	background-image: none;
-	box-shadow: 0 0 20px #f1cb0b, 0 0 5px #f1cb0b, 0 0 5px #f1cb0b;
+	box-shadow: 0 0 5px #f1cb0b, 0 0 5px #f1cb0b, 0 0 5px #f1cb0b;
+}
+/* remove button */
+li button{
+  width: 40px;
+  height: 25px;
+  margin-top: 20px;
+  margin-left: 10px;
+  background-color: #ff4e4e;
+  color: white;
+  border-radius: 5px;
+}
+li button:hover{
+  background-image: none;
+  box-shadow: 0 0 2px grey, 0 0 2px grey, 0 0 2px grey;
+}
+
+/* CartBox */
+
+.cartBox{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+    transition: 0.3s linear;
+    transform: scale(0);
+}
+.cartBox.active{
+  transform: scale(1);
+}
+.cartBox .cart1{
+  position: relative;
+  height: 60%;
+  width: 80%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+.cartBox .cart1 i{
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #ff4e4e;
+  padding: 10px 15px;
+  cursor: pointer;
+  color: #fff;
+}
+.cartBox .cart1 i:hover{
+  background: #ff3535;
+}
+.cartBox .cart1 h1{
+  position: relative;
+  margin-top: 5px;
+  font-size: 1.8em;
+  color: #130f3c;
 }
