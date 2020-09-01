@@ -52,7 +52,7 @@
 	<!-----------------------------------Selection couleurs + panier--------------------------------------------->
 	<div class="container_info">
 		<div class="info">
-			<h3 class="tit" id="brand3">Teddy III</h3>
+			<h3 class="tit" id="brand3">Loulou</h3>
 			<p><span id="price3">20</span>€</p>
 			
 		</div>
@@ -62,8 +62,8 @@
 			<select id="color3" name="color3" onclick="deleteE('message3')">
 				<option value="color" disabled selected>Couleur</option>
 				<option value="Marron">Marron</option>
-				<option value="Marron">Bleu</option>
-				<option value="Marron">Rose</option>
+				<option value="Bleu">Bleu</option>
+				<option value="Rose">Rose</option>
 			</select>
 			<div>
 				<button class="addTo" onclick="add(3)">Ajouter <i class="fas fa-shopping-cart"></i></button>
@@ -90,10 +90,12 @@
 <script>
 	window.onload = function(e){
 		//Cart Box
+		const price = document.querySelector('#price3');
 		const iconShopping = document.querySelector('.iconShopping');
 		const cartCloseBtn = document.querySelector('.fa-close');
 		const cartBox = document.querySelector('.cartBox');
 		const brand = document.querySelector('#brand3');
+		const color = document.querySelector('#color3');
 		iconShopping.addEventListener("click",function(){
 			cartBox.classList.add('active');
 		});
@@ -111,10 +113,12 @@
 				if(typeof(Storage) !== 'undefined'){
 					let item = {
 						id:i+1,
-						name:brand,
-						price:price3,
+						name: brand.innerText,
+						price: price.innerText,
+						color: color.value,
 						no:1
 					};
+					//nb d'articles
 					if(JSON.parse(localStorage.getItem('items')) === null){
 						items.push(item);
 						localStorage.setItem("items",JSON.stringify(items));
@@ -133,7 +137,7 @@
 					}
 					
 				}else{
-					alert('storage is not working on your browser');
+					alert("LocalStorage n'est pas supporté");
 				}
 			});
 
