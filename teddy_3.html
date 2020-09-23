@@ -8,27 +8,6 @@
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-	<!--bouton barre de nav-->
-	<script>
-		$(document).ready(function(){
-			$('#icon').click(function(){
-				$('ul').toggleClass('active');
-			});
-		});
-	</script>
-
-	<!--bouton scroll top-->
-	<script>
-		$(document).ready(function(){
-			$('#btnScrollToTop').click(function(){
-				window.scrollTo({
-					top: 0,
-					left: 0,
-					behavior:"smooth"
-				});
-			});
-		});
-	</script>
 </head>
 <body>
 	<!---------------------------------------HEADER------------------------------------------------>
@@ -59,7 +38,7 @@
 
 		<div class="inputs">
 			<input type="number" id="quantity3" name="quantity3" min="1" max="99" value="1">
-			<select id="color3" name="color3" onclick="deleteE('message3')">
+			<select id="color3" name="color3">
 				<option value="color" disabled selected>Couleur</option>
 				<option value="Marron">Marron</option>
 				<option value="Bleu">Bleu</option>
@@ -100,7 +79,20 @@
 
 		//localstorage ou sessionstorage
 		const addTo = document.getElementsByClassName('addTo');
+		console.log(addTo.length);
 		let items = [];
+		function Delete(e){
+				let items = [];
+				JSON.parse(sessionStorage.getItem('items')).map(data=>{
+					if(data.id == e.parentElement.parentElement.children[0].textContent){
+
+						items.push(data);
+
+					}
+				});
+				sessionStorage.setItem('items',JSON.stringify(items));
+				window.location.reload();
+			};
 		for(let i=0; i<addTo.length; i++){
 			addTo[i].addEventListener("click",function(e){
 				console.log(brand.textContent);
@@ -140,25 +132,25 @@
 		//CARTBOX
 		const cardBoxTable = cartBox.querySelector('table');
 		let tableData = '';
+					
 		tableData += '<tr><th>Nom article</th><th>Couleur article</th><th>Nb article</th><th>Prix</th><th></th></tr>';
 		if (JSON.parse(sessionStorage.getItem('items')) === null){
 			tableData += '<tr><td colspan="5">Nb articles trouvés</td></tr>'
 		}else{
 			JSON.parse(sessionStorage.getItem('items')).map(data=>{
-				tableData += '<tr><th>'+data.name+'</th><th>'+data.color+'</th><th>'+data.no+'</th><th>'+data.price+'</th><th><a href="#" onclick=Delete(e);>Delete</a></th></tr>';
-			});
-			function Delete(e){
-				let items = [];
-				JSON.parse(sessionStorage.getItem('items')).map(data=>{
-					if(data.id == e.parentElement.parentElement.children[0].textContent){
+				tableData += '<tr><th>'+data.name+'</th><th>'+data.color+'</th><th>'+data.no+'</th><th>'+data.price+'</th><th><a href="#" id="'+data.id+'">Delete</a></th></tr>';
+				// if(data && data.id) {
+				// 	console.log(data)
+				// 	document.getElementById(data.id).addEventListener("click", function(e){
+				// 	Delete(e);
+				// });
+				// }
+				
+			})
+			
 
-						items.push(data);
+			
 
-					}
-				});
-				sessionStorage.setItem('items',JSON.stringify(items));
-				window.location.reload();
-			};
 		}
 		cardBoxTable.innerHTML = tableData;
 	}
@@ -173,11 +165,14 @@
 		function add(n){
 			colorId = "color" + n;
 			messageId = "message" + n;
+			console.log(colorId)
+			console.log(messageId)
 			color = document.getElementById(colorId).value;
 			if (color==="color"){
 				document.getElementById(messageId).innerHTML = message;
 				return 0;
 			}
+		}
 </script>
 <!--------------------------------Images couleurs-------------------------------------------->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -190,6 +185,7 @@
 	})
 </script>
 <!--------------------------------------------------------------------------------------->
+<script type="text/javascript" src="main.js"></script>
 </body>
 </html>
 
