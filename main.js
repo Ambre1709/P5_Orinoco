@@ -30,7 +30,7 @@ function afficherTeddy(teddy){
   divIndex.className="image"
 
   const aIndex=document.createElement("a")
-  aIndex.href="produit.html?id=" + teddy._id          //comment afficher l'ourson?
+  aIndex.href="produit.html?id=" + teddy._id          //-----------------------------comment afficher l'ourson sur la page produit?
 
   const imageIndex=document.createElement("img") //image des ours
   imageIndex.src=teddy.imageUrl //image des ours
