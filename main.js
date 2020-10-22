@@ -1,10 +1,10 @@
-//barre de navigation responsive
+//barre de navigation responsive --------------------------------------------
 $(document).ready(function(){
   $('#icon').click(function(){
     $('ul').toggleClass('active');
   });
 
-//bouton scrolltotop de la page d'acceuil, pas encore paramètré CSS
+//bouton scrolltotop de la page d'acceuil, pas encore paramètré CSS ---------
   $('#btnScrollToTop').click(function(){
     window.scrollTo({
       top: 0,
@@ -14,6 +14,7 @@ $(document).ready(function(){
   });
 });
 
+//localhost ------------------------------------------------------------------
 fetch ("http://localhost:3000/api/teddies")
 .then(response => response.json())
 .then(resp => {
@@ -22,21 +23,28 @@ fetch ("http://localhost:3000/api/teddies")
     afficherTeddy(resp[i])
   }
 })
-//page acceuil
+//page acceuil index ---------------------------------------------------------
 function afficherTeddy(teddy){
-  let divIndex=document.createElement("div")
+
+  const divIndex=document.createElement("div")
   divIndex.className="image"
-  let aIndex=document.createElement("a")
-  aIndex.href="produit.html"
-  let imageIndex=document.createElement("img")
-  imageIndex.src=teddy.imageUrl
-  imageIndex.className="imageSize"
+
+  const aIndex=document.createElement("a")
+  aIndex.href="produit.html?id=" + teddy._id          //comment afficher l'ourson?
+
+  const imageIndex=document.createElement("img") //image des ours
+  imageIndex.src=teddy.imageUrl //image des ours
+  imageIndex.className="imageSize" //taille image des ours
+
+  const nameIndex=document.createElement("h3") //nom de l'ours
+  nameIndex.textContent=teddy.name //nom de l'ours
+
+  const priceIndex=document.createElement("h3") //prix de l'ours
+  priceIndex.textContent=teddy.price + "€" //prix de l'ours
+
+
   aIndex.appendChild(imageIndex)
   divIndex.appendChild(aIndex)
-  let nameIndex=document.createElement("h3")
-  nameIndex.textContent=teddy.name
-   let priceIndex=document.createElement("h3")
-  priceIndex.textContent=teddy.price
   divIndex.appendChild(nameIndex)
   divIndex.appendChild(priceIndex)
   document.getElementById("list_teddy").appendChild(divIndex)
