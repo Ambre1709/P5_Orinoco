@@ -19,5 +19,56 @@
       </ul>
       <label id="icon"><i class="fas fa-bars"></i></label>
     </nav>
+
+
+
+    <main>
+
+    <form id="formulaire" >
+      <div class="x">
+        <div class="center">
+            <label for="firstname">Prénom :</label>
+            <input type="text" name="firstName" class="form-control" id="firstname" placeholder="Votre prénom..." required><span id='absencePrenom'></span><br>
+        </div>
+        <div class="center">
+            <label for="name">Nom :</label>
+            <input type="text" name="lastName" class="form-control" id="name" placeholder="Votre nom..." required><span id='absenceNom'></span><br>
+        </div>
+    </div>
+    <div class="x">
+        <div class="center">
+            <label for="email">Email :</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="Votre email@email.fr" required><span id='absenceEmail'></span><br>
+        </div>
+        <div class="center">
+            <label for="address">Adresse :</label>
+            <input type="text" name="address" class="form-control" id="address" placeholder="6, Rue du Moulin" required><span id='absenceAdress'></span><br>
+        </div>
+    </div>
+        <div class="center">
+            <label for="city">Ville :</label>
+            <input type="text" name="city" class="form-control" id="city" placeholder="Votre ville..." required><span id='absenceVille'></span><br>
+        </div>
+  
+      <button type="button" onclick="achat()" id="valider">Valider mon panier</button>
+     
+    </form>
+  
+    </main> 
+
+
+
+    <footer>
+
+    <div class="footer">
+      <p class="jaune"><i class="fas fa-lock"> Paiement Sécurisé </i></p>
+      <a href="#"><p><span class="jaune">Mentions légales</span></p></a>
+      <a href="mailto:exemple@gmail.com"><p><span class="jaune">Contactez-nous</span></p></a>
+    </div>
+        
+</footer>
+
+
 </body>
+<script src="panier.js"></script>
 </html>
