@@ -4,13 +4,14 @@ function getId(){
 	const id = param.replace("?id=","") //récup uniquement de l'id
 	return id
 }
-
+let produit;
 //localhost ------------------------------------------------------------------
 fetch ("http://localhost:3000/api/teddies/" + getId())
 .then(response => response.json())
 .then(resp => {
-  console.log(resp)
-  afficherTeddyInfo(resp)
+  console.log(resp);
+  afficherTeddyInfo(resp);
+  produit=resp;
 })
 
 // ajouter info produit dans l'html---------------------------------------------
@@ -34,6 +35,10 @@ div.className="image";
   const description=document.createElement("h4");
   description.textContent=teddy.description;
 
+//prix de l'ours
+  const price=document.createElement("h3"); 
+  price.textContent=teddy.price /100+ "€"; 
+
 //Options couleurs
   const colors=document.createElement("select");
   colors.textContent=teddy.name;
@@ -44,19 +49,16 @@ div.className="image";
   	colors.appendChild(option);
   }
 
-
-
-
-
-//Choix de la quantité commandé//----------------------------------------a faire, selectionner une quantité avant ajout au panier
-    const quantity = document.createElement("input")
-
-  const price=document.createElement("h3"); //prix de l'ours
-  price.textContent=teddy.price + "€"; 
-
-
-
-
+//Options quantité
+  const quantity=document.createElement("select");
+  quantity.id='quantity';
+  quantity.textContent=teddy.name;
+// création d'une boucle For pour afficher la liste déroulante
+  for (var i = 0; i < [1, 2, 3, 4, 5].length; i++) {
+  	const option=document.createElement("option");
+  	option.textContent=i+1;
+  	quantity.appendChild(option);
+  }
 //-------------------------------------------------------------------------------comment transferer le produit dans le sessionstorage?
 
 // bouton Ajout au panier
@@ -64,42 +66,42 @@ div.className="image";
     ajoutPanier.textContent = "Ajouter au panier";
     
     ajoutPanier.addEventListener('click',function(){
-    	ajoutSessionStorage()//----data is not defined
+    	ajoutSessionStorage(produit)
     });
 
-    function ajoutSessionStorage(){
+    function ajoutSessionStorage(data){
     	let objetTeddy={
-    		_id: data._id,//----data is not defined
+    		_id: data._id,
     		image:data.imageUrl,
     		name: data.name,
     		colors: colors.value,
-    		quantity: 1,
+    		quantity: document.getElementById('quantity').value,
     		price: data.price,
     	}
 
+    //localStorage.setItem("username", "John");
+    let list_products = sessionStorage.getItem('list_products');
+    if(list_products){
+    	// Si un tableau existe deja le localstorage`
+    	let tab = JSON.parse(list_products);
+    	tab.push(objetTeddy);//ajouter le produit dans le tableau
+    	sessionStorage.setItem('list_products', JSON.stringify(tab));
+    }else{
+    	// localstorage est vide;
+    	sessionStorage.setItem('list_products', JSON.stringify([objetTeddy]));
+    }
+    alert("Ajout de " + teddy.name + " à votre panier")
 
 
     }
 
 
 
-
-    ajoutPanier.addEventListener("click", function() {
-        alert("Ajout de " + teddy.name + " à votre panier")
-      
-
-
-
-
-
-
-
-//----------------------------------------------------------------------------------------------------------------------------------------
-})
-  
+  //DOM
   div.appendChild(image);
   div.appendChild(name);
   div.appendChild(description);
+  div.appendChild(quantity);
   div.appendChild(colors);
   div.appendChild(price);
   div.appendChild(ajoutPanier);

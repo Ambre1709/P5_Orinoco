@@ -40,7 +40,7 @@ function afficherTeddy(teddy){
   nameIndex.textContent=teddy.name //nom de l'ours
 
   const priceIndex=document.createElement("h3") //prix de l'ours
-  priceIndex.textContent=teddy.price + "€" //prix de l'ours
+  priceIndex.textContent=teddy.price /100 + "€" //prix de l'ours
 
 
   aIndex.appendChild(imageIndex)
