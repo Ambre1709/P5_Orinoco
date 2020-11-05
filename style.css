@@ -83,7 +83,7 @@ main .container{
     margin-right: 10px;
     margin-left: 10px;
 }
-/*Page d'un seul produit-----------------------------------------------------pourquoi l'image n'est pas centrer ni les boutons?*/
+/*Page d'un seul produit*/
 .teddycontainer{
     display: flex;
     justify-content: center;
@@ -97,7 +97,7 @@ h2 {
 }
 .imageSize{
   width: 600px;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.4);
 }
 .image{
   display: flex;
@@ -168,7 +168,40 @@ select{
   background-color: #130f3c;
   border-radius: 0px;
 }
-/*------------------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------------Panier-----------------*/
+#content_table{
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+margin-top: 50px;
+margin-bottom: 100px;
+}
+/*----------------------------------------------------------------------------------------comment espacer les produit dans le panier?*/
+{
+  margin-left: 10px
+  margin-right: 10px;
+}
+#formulaire{
+  box-shadow: 0px 0px 10px 0px rgba(7.5,5.9,23.5,0.5);
+}
+#formulaire h3{
+  margin-bottom: 50px;
+  padding-top: 20px;
+}
+#form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#form input{
+  width: 500px;
+}
+#form button{
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+/*-----------------------------------------------------------------*/
 /*RESPONSIVE DESIGN*/
 
 

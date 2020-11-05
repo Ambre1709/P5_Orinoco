@@ -11,63 +11,62 @@
 </head>
 
 <body>
-<nav>
-      <label class="logo">Orinoco</label>
-      <ul>
-        <li><a href="index.html"><i class="fas fa-home"></i>Accueil</a></li>
-        <li><a href="panier.html"><i class="fas fa-shopping-cart"></i>Panier</a></li>
-      </ul>
-      <label id="icon"><i class="fas fa-bars"></i></label>
-    </nav>
+  <nav>
+    <label class="logo">Orinoco</label>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i>Accueil</a></li>
+      <li><a href="panier.html"><i class="fas fa-shopping-cart"></i>Panier</a></li>
+    </ul>
+    <label id="icon"><i class="fas fa-bars"></i></label>
+  </nav>
 
 
 
-    <main>
+  <main>
+<h2>Contenu de votre panier</h2>
+    <section id= "content_table">
 
-    <form id="formulaire" >
-      <div class="x">
-        <div class="center">
-            <label for="firstname">Prénom :</label>
-            <input type="text" name="firstName" class="form-control" id="firstname" placeholder="Charles" required><span id='absencePrenom'></span><br>
-        </div>
-        <div class="center">
-            <label for="name">Nom :</label>
-            <input type="text" name="lastName" class="form-control" id="name" placeholder="Dupont" required><span id='absenceNom'></span><br>
-        </div>
-    </div>
-    <div class="x">
-        <div class="center">
-            <label for="email">Email :</label>
-            <input type="email" name="email" class="form-control" id="email" placeholder="email@email.fr" required><span id='absenceEmail'></span><br>
-        </div>
-        <div class="center">
-            <label for="address">Adresse :</label>
-            <input type="text" name="address" class="form-control" id="address" placeholder="5, Rue du chat" required><span id='absenceAdress'></span><br>
-        </div>
-    </div>
-        <div class="center">
-            <label for="city">Ville :</label>
-            <input type="text" name="city" class="form-control" id="city" placeholder="Paris" required><span id='absenceVille'></span><br>
-        </div>
-  <div class="center">
-      <button type="button" onclick="achat()" id="valider">Valider mon panier</button>
-    </div>
-     
-    </form>
-  
-    </main> 
+    </section>
 
 
 
-    <footer>
+    <section id="formulaire" >
+      <h3>Pour valider la commande, merci de remplir ce formulaire</h3>
+      <form id="form">
+
+        <label id='first_name' for=firstName>Prénom :</label>
+        <input type="text" name="firstName" id="firstName" required>
+
+        <label for="lastName">Nom :</label>
+        <input type="text" name="lastName" id="lastName" required>
+
+        <label for="email">E-mail :</label>
+        <input type="email" name="email" id="email" required placeholder="utilisateur@domaine.fr">
+
+        <label for="address">Adresse :</label>
+        <input type="text" name="address" id="address" required>
+
+        <label for="city">Ville :</label>
+        <input type="text" name="city" id="city" required>
+
+        <button onclick="createFormSend()"> Commander </button>
+
+      </form>
+    </section>
+
+  </main> 
+
+
+
+  <footer>
 
     <div class="footer">
       <p class="jaune"><i class="fas fa-lock"></i> Paiement Sécurisé</p>
       <a href="#"><p><span class="jaune">Mentions légales</span></p></a>
       <a href="mailto:exemple@gmail.com"><p><span class="jaune">Contactez-nous</span></p></a>
     </div>
-        
-</footer>
+
+  </footer>
 
 
 </body>

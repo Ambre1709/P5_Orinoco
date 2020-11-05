@@ -59,7 +59,8 @@ div.className="image";
   	option.textContent=i+1;
   	quantity.appendChild(option);
   }
-//-------------------------------------------------------------------------------comment transferer le produit dans le sessionstorage?
+
+//-----sessionStorage--------------------------------------
 
 // bouton Ajout au panier
     const ajoutPanier = document.createElement ("button");
@@ -69,6 +70,7 @@ div.className="image";
     	ajoutSessionStorage(produit)
     });
 
+    //info du produit pour le storage
     function ajoutSessionStorage(data){
     	let objetTeddy={
     		_id: data._id,
@@ -79,15 +81,15 @@ div.className="image";
     		price: data.price,
     	}
 
-    //localStorage.setItem("username", "John");
+    //
     let list_products = sessionStorage.getItem('list_products');
     if(list_products){
-    	// Si un tableau existe deja le localstorage`
+    	// Si un tableau existe deja le sessionStorage
     	let tab = JSON.parse(list_products);
     	tab.push(objetTeddy);//ajouter le produit dans le tableau
     	sessionStorage.setItem('list_products', JSON.stringify(tab));
     }else{
-    	// localstorage est vide;
+    	// sessionStorage est vide;
     	sessionStorage.setItem('list_products', JSON.stringify([objetTeddy]));
     }
     alert("Ajout de " + teddy.name + " à votre panier")
