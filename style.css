@@ -168,7 +168,9 @@ select{
   background-color: #130f3c;
   border-radius: 0px;
 }
-
+article img{
+  width: 150px;
+}
 /*------------------------------------------Panier-----------------*/
 #content_table{
 display: flex;

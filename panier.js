@@ -26,9 +26,10 @@ fetch ("http://localhost:3000/api/teddies/" + getId())
 //-----------------------------------------------------------------------------------------------------------------------------------------
 
 //permet d'afficher les produits
-function imageTeddy(produit, id) {
+function imageTeddy(produit, id, url) {
     let image = document.createElement('img');
     image.className = `image_${id}`;
+    image.src=url;
     produit.appendChild(image);
 }
 
@@ -43,18 +44,18 @@ function nameTeddy(parent, txt) {
 //Couleur 
 function colorTeddy(parent, color) {
     let couleur = document.createElement('p');
-    let contenu = document.createTextNode(`Couleur : ${color}`);
+    let contenu = document.createTextNode(`Couleur : ${color}`);//pour que la variable soit affiché et exécuté en temps que texte ${color}`
     parent.appendChild(couleur);
     couleur.appendChild(contenu);
 }
 
 //Quantité
 function quantityTeddy(parent, quantity) {
-    let Quantité = document.createElement('p');
-    Quantité.className = 'quantity';
+    let quantite = document.createElement('p');
+    quantite.className = 'quantity';
     let contenu = document.createTextNode(`Quantité : ${quantity}`);
-    parent.appendChild(Quantité);
-    Quantité.appendChild(contenu);
+    parent.appendChild(quantite);
+    quantite.appendChild(contenu);
 }
 
 //Prix total de l'ourson en fonction de la quantitée
@@ -81,7 +82,7 @@ function emptyCart(produit) {
 
 
 function totalPriceOrder() {//--------------------------------à faire
-
+//for each
 }
 
 
@@ -104,9 +105,9 @@ function createCart() {
             //multiplier le prix par la quantitée
             let totalPrice = product.price /100 * product.quantity
 
-              //Ajout au DOM
+            //Ajout au DOM
             panier.appendChild(produit)
-            imageTeddy(produit, product.id)
+            imageTeddy(produit, product.id, product.image)
 
             produit.appendChild(div)
             nameTeddy(div, product.name)
@@ -114,7 +115,7 @@ function createCart() {
             quantityTeddy(div, product.quantity)
             priceTeddy(div, product.id, totalPrice)
 
-            //Bouton pour supprimer l'article du localStorage
+            //Bouton pour supprimer l'article du sessionStorage
             btnRemoveItems(produit, keys)
         }
     }

@@ -86,8 +86,15 @@ div.className="image";
     if(list_products){
     	// Si un tableau existe deja le sessionStorage
     	let tab = JSON.parse(list_products);
-    	tab.push(objetTeddy);//ajouter le produit dans le tableau
-    	sessionStorage.setItem('list_products', JSON.stringify(tab));
+      //vérifier si la couleur est deja présente pour un même id
+      const resultat = tab.findIndex( product => product._id === objetTeddy._id && product.colors === objetTeddy.colors);//est ce que le produit existe déjà? on essaye de le trouver dans le local storage
+      if (resultat !== -1) {//si le produit existe deja
+        //incrémenter la quantité
+        tab[resultat].quantity=parseInt(tab[resultat].quantity) + parseInt(objetTeddy.quantity)
+      }else{//si le produit n'existe pas
+      tab.push(objetTeddy);//ajouter le produit dans le tableau
+      }
+      sessionStorage.setItem('list_products', JSON.stringify(tab));
     }else{
     	// sessionStorage est vide;
     	sessionStorage.setItem('list_products', JSON.stringify([objetTeddy]));
