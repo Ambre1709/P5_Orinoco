@@ -87,7 +87,8 @@ div.className="image";
     	// Si un tableau existe deja le sessionStorage
     	let tab = JSON.parse(list_products);
       //vérifier si la couleur est deja présente pour un même id
-      const resultat = tab.findIndex( product => product._id === objetTeddy._id && product.colors === objetTeddy.colors);//est ce que le produit existe déjà? on essaye de le trouver dans le local storage
+      //Trouver si le produit est déjà existant dans le storage
+      const resultat = tab.findIndex( product => product._id === objetTeddy._id && product.colors === objetTeddy.colors);
       if (resultat !== -1) {//si le produit existe deja
         //incrémenter la quantité
         tab[resultat].quantity=parseInt(tab[resultat].quantity) + parseInt(objetTeddy.quantity)
