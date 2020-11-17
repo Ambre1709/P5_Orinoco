@@ -1,3 +1,9 @@
+//barre de navigation responsive --------------------------------------------
+$(document).ready(function(){
+  $('#icon').click(function(){
+    $('ul').toggleClass('active');
+  });
+})
 //récup de l'id de l'url---------------------------------------------
 function getId(){
 	const param = window.location.search
@@ -8,6 +14,7 @@ let produit;
 //localhost ------------------------------------------------------------------
 fetch ("http://localhost:3000/api/teddies/" + getId())
 .then(response => response.json())
+
 .then(resp => {
   console.log(resp);
   afficherTeddyInfo(resp);

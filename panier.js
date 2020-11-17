@@ -1,3 +1,9 @@
+//barre de navigation responsive --------------------------------------------
+$(document).ready(function(){
+  $('#icon').click(function(){
+    $('ul').toggleClass('active');
+  });
+})
 //récup de l'id de l'url---------------------------------------------
 function getId(){
 	const param = window.location.search
@@ -57,6 +63,22 @@ function priceTeddy(produit, id, txt) {
     produit.appendChild(price);
     price.appendChild(contenu);
 }
+//-----------------------------------------------------------------------------------------------------------------------------------------
+//Prix total
+function totalPriceCart(){
+	let totalPanier = document.getElementById('prix_total');
+    let totalPrice = document.createElement('p');
+    let totalCart = 0
+    let cart = JSON.parse(sessionStorage.getItem('list_products'))//parse pour convertir sous forme de tableau
+    for (let item of cart) {
+        totalCart += item.price /100 * item.quantity
+    }
+    let contenu = document.createTextNode(`Prix Total Panier: ${totalCart} €`);
+    prix_total.appendChild(totalPrice);
+    totalPrice.appendChild(contenu);
+
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------
 
 //Récapitulatif des produits stockés dans le Storage
 function createCart() {
@@ -88,8 +110,14 @@ function createCart() {
 
             //Bouton pour supprimer l'article du sessionStorage
             btnRemoveItems(produit, product)
+
+            
+			
+            
         }
     }
+    //totalcart
+    totalPriceCart()
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------
 //Bouton pour supprimer un article
@@ -110,8 +138,48 @@ function deleteItemCart(product) {
     for (let [index, item] of cart.entries()) {//entries renvoie un tableau de [key, value] paires.
         if (product.name === item.name && product.color === item.color) {
             cart.splice(index, 1)//splice permet de supprimer un élement du tableau
-            sessionStorage.setItem('list_products', JSON.stringify(cart))//mettre a jour le sessionStorage apres la supression du produit
+            sessionStorage.setItem('list_products', JSON.stringify(cart))//mettre a jour le sessionStorage apres la suppression du produit
         }
     }
     window.location.reload()
 }
+//-----------------------------------------------------------------------------------------------------------------------------------------
+
+//Formulaire
+function achat(){
+//récupération de la saisie du client
+    let firstName = document.getElementById('firstName').value;
+    let lastName = document.getElementById('lastName').value;
+    let email = document.getElementById('email').value;
+    let address = document.getElementById('address').value;
+    let city = document.getElementById('city').value;
+//faire des verifications si les valeurs sont bien définies, champ vide etc----------------
+//mise en forme des valeurs avant leur envoi
+    let contact = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        address: address,
+        city: city,
+    }
+    let product_id = []
+    let cart = JSON.parse(sessionStorage.getItem('list_products'))//parse pour convertir sous forme de tableau
+    for (let item of cart) {
+product_id.push(item._id)
+    }
+//fletch pour soumettre le formulaire-----------------------------
+//
+  let objt = {
+    contact,
+    product:product_id
+  };
+
+  let achat = JSON.stringify(objt);
+  
+  console.log(achat);
+}
+
+document.getElementById('valider').addEventListener('click', function(event){
+    event.preventDefault()//annul le comportement par defaut
+    achat()
+})

@@ -28,28 +28,30 @@
 
     </section>
 
+    <section id= "prix_total">
 
+    </section>
 
     <section id="formulaire" >
       <h3>Pour valider la commande, merci de remplir ce formulaire</h3>
-      <form id="form">
+      <form id="form" method="post">
 
         <label id='first_name' for=firstName>Prénom :</label>
-        <input type="text" name="firstName" id="firstName" required>
+        <input type="text" name="firstName" id="firstName" required placeholder="Charles"><span id='missingFirstname'></span>
 
         <label for="lastName">Nom :</label>
-        <input type="text" name="lastName" id="lastName" required>
+        <input type="text" name="lastName" id="lastName" required placeholder="Dupont"><span id='missingLastname'></span>
 
         <label for="email">E-mail :</label>
-        <input type="email" name="email" id="email" required placeholder="utilisateur@domaine.fr">
+        <input type="email" name="email" id="email" required placeholder="utilisateur@domaine.fr"><span id='missingEmail'></span>
 
         <label for="address">Adresse :</label>
-        <input type="text" name="address" id="address" required>
+        <input type="text" name="address" id="address" required placeholder="5 rue du chateau"><span id='missingAddress'></span>
 
         <label for="city">Ville :</label>
-        <input type="text" name="city" id="city" required>
+        <input type="text" name="city" id="city" required placeholder="Paris"><span id='missingCity'></span>
 
-        <button onclick="createFormSend()"> Commander </button>
+        <button id="valider" type="submit"> Commander </button>
 
       </form>
     </section>
