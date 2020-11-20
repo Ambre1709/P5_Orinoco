@@ -16,7 +16,7 @@ fetch ("http://localhost:3000/api/teddies/" + getId())
 .then(response => response.json())
 .then(resp => {
   console.log(resp);
-  createCart(resp);//------cette ligne est correct?
+  createCart(resp);
   produit=resp;
 })
 
@@ -148,17 +148,70 @@ function deleteItemCart(product) {
 //Formulaire
 function achat(){
 //récupération de la saisie du client
-    let firstName = document.getElementById('firstName').value;
-    let lastName = document.getElementById('lastName').value;
-    let email = document.getElementById('email').value;
-    let address = document.getElementById('address').value;
-    let city = document.getElementById('city').value;
+    let firstName = document.getElementById('firstName');
+    let lastName = document.getElementById('lastName');
+    let mail = document.getElementById('email');
+    let address = document.getElementById('address');
+    let city = document.getElementById('city');
+//--------------------------------------------------------------------------------------------------------------------------
 //faire des verifications si les valeurs sont bien définies, champ vide etc----------------
+
+let form  = document.getElementsByTagName('form')[0];
+let missingFirstName = document.querySelector('#missingFirstName');
+let missingLastName = document.querySelector('#missingLastName');
+let missingAddress = document.querySelector('#missingAddress');
+let missingCity = document.querySelector('#missingCity');
+
+//REGEX
+let emailValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+let firstNameValid =/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+let lastNameValid =/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+let addressValid =/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;//-----------------------------------pas sur qu'il soit bon
+let cityValid=/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+
+
+if (emailValid.test(email.value) == false){
+        missingEmail.innerHTML = "Merci de renseigner correctement votre Email !";
+        missingEmail.className = "missingValue";
+    } else {
+//si le mail est correct, ne pas afficher le message
+        missingEmail.innerHTML = "";
+}
+if (firstNameValid.test(firstName.value) == false){
+        missingFirstName.innerHTML = "Merci de renseigner correctement votre prénom !";
+        missingFirstName.className = "missingValue";
+    } else {
+//si le mail est correct, ne pas afficher le message
+        missingFirstName.innerHTML = "";
+}
+if (lastNameValid.test(lastName.value) == false){
+        missingLastName.innerHTML = "Merci de renseigner correctement votre nom !";
+        missingLastName.className = "missingValue";
+    } else {
+//si le mail est correct, ne pas afficher le message
+        missingLastName.innerHTML = "";
+}
+if (addressValid.test(address.value) == false){
+        missingAddress.innerHTML = "Merci de renseigner correctement votre adress !";
+        missingAddress.className = "missingValue";
+    } else {
+//si le mail est correct, ne pas afficher le message
+        missingAddress.innerHTML = "";
+}
+if (cityValid.test(city.value) == false){
+        missingCity.innerHTML = "Merci de renseigner correctement votre ville !";
+        missingCity.className = "missingValue";
+    } else {
+//si le mail est correct, ne pas afficher le message
+        missingCity.innerHTML = "";
+}
+
+//-----------------------------------------------------------------------------------------------------------------------------------------
 //mise en forme des valeurs avant leur envoi
     let contact = {
         firstName: firstName,
         lastName: lastName,
-        email: email,
+        mail: email,
         address: address,
         city: city,
     }
@@ -167,7 +220,18 @@ function achat(){
     for (let item of cart) {
 product_id.push(item._id)
     }
+//----------------------------------------------------------------------------------------------------------------A FAIRE-------------------------
 //fletch pour soumettre le formulaire-----------------------------
+ const sendApi = async function (data) {
+    let reponse = await fetch ('http://localhost:3000/api/teddies/order', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                  'Content-type': 'application/json'
+                }
+            });
+    }
+//-----------------------------------------------------------------------------------------------------------------------------------------
 //
   let objt = {
     contact,
@@ -180,6 +244,6 @@ product_id.push(item._id)
 }
 
 document.getElementById('valider').addEventListener('click', function(event){
-    event.preventDefault()//annul le comportement par defaut
+    event.preventDefault()//annule le comportement par defaut
     achat()
 })
