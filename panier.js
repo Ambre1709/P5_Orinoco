@@ -2,7 +2,7 @@
 $(document).ready(function(){
   $('#icon').click(function(){
     $('ul').toggleClass('active');
-  });
+});
 })
 //récup de l'id de l'url---------------------------------------------
 function getId(){
@@ -21,7 +21,6 @@ fetch ("http://localhost:3000/api/teddies/" + getId())
 })
 
 //-----------------------------------------------------------------------------------------------------------------------------------------
-
 //permet d'afficher les produits
 function imageTeddy(produit, id, url) {
     let image = document.createElement('img');
@@ -67,7 +66,7 @@ function priceTeddy(produit, id, txt) {
 //Prix total
 function totalPriceCart(){
 	let totalPanier = document.getElementById('prix_total');
-    let totalPrice = document.createElement('p');
+    let totalPrice = document.createElement('h4');
     let totalCart = 0
     let cart = JSON.parse(sessionStorage.getItem('list_products'))//parse pour convertir sous forme de tableau
     for (let item of cart) {
@@ -76,10 +75,8 @@ function totalPriceCart(){
     let contenu = document.createTextNode(`Prix Total Panier: ${totalCart} €`);
     prix_total.appendChild(totalPrice);
     totalPrice.appendChild(contenu);
-
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------
-
 //Récapitulatif des produits stockés dans le Storage
 function createCart() {
 
@@ -109,11 +106,7 @@ function createCart() {
             priceTeddy(div, product.id, totalPrice)
 
             //Bouton pour supprimer l'article du sessionStorage
-            btnRemoveItems(produit, product)
-
-            
-			
-            
+            btnRemoveItems(produit, product)   
         }
     }
     //totalcart
@@ -130,7 +123,6 @@ function btnRemoveItems(parent, product) {
     parent.appendChild(btnRemove);//affiche le bouton
     btnRemove.appendChild(contents); //affiche "supprimer"
 }
-
 //Supprimer l'article demandé
 function deleteItemCart(product) {
 
@@ -144,18 +136,16 @@ function deleteItemCart(product) {
     window.location.reload()
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------
-
 //Formulaire
 function achat(){
 //récupération de la saisie du client
-    let firstName = document.getElementById('firstName');
-    let lastName = document.getElementById('lastName');
-    let mail = document.getElementById('email');
-    let address = document.getElementById('address');
-    let city = document.getElementById('city');
+let firstName = document.getElementById('firstName');
+let lastName = document.getElementById('lastName');
+let mail = document.getElementById('email');
+let address = document.getElementById('address');
+let city = document.getElementById('city');
 //--------------------------------------------------------------------------------------------------------------------------
 //faire des verifications si les valeurs sont bien définies, champ vide etc----------------
-
 let form  = document.getElementsByTagName('form')[0];
 let missingFirstName = document.querySelector('#missingFirstName');
 let missingLastName = document.querySelector('#missingLastName');
@@ -171,76 +161,87 @@ let cityValid=/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
 
 
 if (emailValid.test(email.value) == false){
-        missingEmail.innerHTML = "Merci de renseigner correctement votre Email !";
-        missingEmail.className = "missingValue";
-    } else {
+    missingEmail.innerHTML = "Merci de renseigner correctement votre Email !";
+    missingEmail.className = "missingValue";
+} else {
 //si le mail est correct, ne pas afficher le message
-        missingEmail.innerHTML = "";
+missingEmail.innerHTML = "";
 }
 if (firstNameValid.test(firstName.value) == false){
-        missingFirstName.innerHTML = "Merci de renseigner correctement votre prénom !";
-        missingFirstName.className = "missingValue";
-    } else {
+    missingFirstName.innerHTML = "Merci de renseigner correctement votre prénom !";
+    missingFirstName.className = "missingValue";
+} else {
 //si le mail est correct, ne pas afficher le message
-        missingFirstName.innerHTML = "";
+missingFirstName.innerHTML = "";
 }
 if (lastNameValid.test(lastName.value) == false){
-        missingLastName.innerHTML = "Merci de renseigner correctement votre nom !";
-        missingLastName.className = "missingValue";
-    } else {
+    missingLastName.innerHTML = "Merci de renseigner correctement votre nom !";
+    missingLastName.className = "missingValue";
+} else {
 //si le mail est correct, ne pas afficher le message
-        missingLastName.innerHTML = "";
+missingLastName.innerHTML = "";
 }
 if (addressValid.test(address.value) == false){
-        missingAddress.innerHTML = "Merci de renseigner correctement votre adress !";
-        missingAddress.className = "missingValue";
-    } else {
+    missingAddress.innerHTML = "Merci de renseigner correctement votre adresse !";
+    missingAddress.className = "missingValue";
+} else {
 //si le mail est correct, ne pas afficher le message
-        missingAddress.innerHTML = "";
+missingAddress.innerHTML = "";
 }
 if (cityValid.test(city.value) == false){
-        missingCity.innerHTML = "Merci de renseigner correctement votre ville !";
-        missingCity.className = "missingValue";
-    } else {
+    missingCity.innerHTML = "Merci de renseigner correctement votre ville !";
+    missingCity.className = "missingValue";
+} else {
 //si le mail est correct, ne pas afficher le message
-        missingCity.innerHTML = "";
+missingCity.innerHTML = "";
 }
-
 //-----------------------------------------------------------------------------------------------------------------------------------------
 //mise en forme des valeurs avant leur envoi
-    let contact = {
-        firstName: firstName,
-        lastName: lastName,
-        mail: email,
-        address: address,
-        city: city,
-    }
-    let product_id = []
+let contact = {
+    firstName: firstName.value,
+    lastName: lastName.value,
+    email: email.value,
+    address: address.value,
+    city: city.value,
+}
+let product_id = []
     let cart = JSON.parse(sessionStorage.getItem('list_products'))//parse pour convertir sous forme de tableau
     for (let item of cart) {
-product_id.push(item._id)
+        product_id.push(item._id)
     }
-//----------------------------------------------------------------------------------------------------------------A FAIRE-------------------------
+//----------------------------------------------------------------------------------------------------------------A lier quand je clock sur le bouton commander-------------------------
 //fletch pour soumettre le formulaire-----------------------------
- const sendApi = async function (data) {
+const sendApi = async function (data) {
     let reponse = await fetch ('http://localhost:3000/api/teddies/order', {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                  'Content-type': 'application/json'
-                }
-            });
-    }
+        method: 'POST',
+        body: data,
+        headers: {
+          'Content-type': 'application/json'
+      }
+  });
+    //si ok
+    if(reponse.ok){
+        let infos = await reponse.json();
+        window.location = 'confirmation.html?OrderId=' + infos.orderId;
+    //si pas ok
+}else{
+    event.preventDefault();
+    alert ("erreur: : " + reponse.status);
+}
+}
 //-----------------------------------------------------------------------------------------------------------------------------------------
-//
-  let objt = {
-    contact,
-    product:product_id
-  };
+let objt = {
+    'contact':contact,
+    'products':product_id
+};
 
-  let achat = JSON.stringify(objt);
-  
-  console.log(achat);
+let achat =objt;
+console.log(objt);
+console.log(JSON.stringify(objt));
+sendApi(JSON.stringify(achat)).then(data => {console.log(data)});
+
+
+console.log(achat);
 }
 
 document.getElementById('valider').addEventListener('click', function(event){

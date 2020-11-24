@@ -24,58 +24,58 @@ fetch ("http://localhost:3000/api/teddies/" + getId())
 // ajouter info produit dans l'html---------------------------------------------
 function afficherTeddyInfo(teddy){
 
-const container = document.getElementById("teddycontainer");
+  const container = document.getElementById("teddycontainer");
 
-const div = document.createElement("div");
-div.className="image";
+  const div = document.createElement("div");
+  div.className="image";
 
 //image des ours
-  const image=document.createElement("img");
-  image.src=teddy.imageUrl;
+const image=document.createElement("img");
+image.src=teddy.imageUrl;
   image.className="imageSize"; //taille image des ours
 
 //nom de l'ours
-  const name=document.createElement("h3");
-  name.textContent=teddy.name; 
+const name=document.createElement("h3");
+name.textContent=teddy.name; 
 
 //description de l'ours
-  const description=document.createElement("h4");
-  description.textContent=teddy.description;
+const description=document.createElement("h4");
+description.textContent=teddy.description;
 
 //prix de l'ours
-  const price=document.createElement("h3"); 
-  price.textContent=teddy.price /100+ "€"; 
+const price=document.createElement("h3"); 
+price.textContent=teddy.price /100+ "€"; 
 
 //Options couleurs
-  const colors=document.createElement("select");
-  colors.textContent=teddy.name;
+const colors=document.createElement("select");
+colors.textContent=teddy.name;
 // création d'une boucle For pour afficher la liste déroulante des couleurs
-  for (var i = 0; i < teddy.colors.length; i++) {
-  	const option=document.createElement("option");
-  	option.textContent=teddy.colors[i];
-  	colors.appendChild(option);
-  }
+for (var i = 0; i < teddy.colors.length; i++) {
+ const option=document.createElement("option");
+ option.textContent=teddy.colors[i];
+ colors.appendChild(option);
+}
 
 //Options quantité
-  const quantity=document.createElement("select");
-  quantity.id='quantity';
-  quantity.textContent=teddy.name;
+const quantity=document.createElement("select");
+quantity.id='quantity';
+quantity.textContent=teddy.name;
 // création d'une boucle For pour afficher la liste déroulante
-  for (var i = 0; i < [1, 2, 3, 4, 5].length; i++) {
-  	const option=document.createElement("option");
-  	option.textContent=i+1;
-  	quantity.appendChild(option);
-  }
+for (var i = 0; i < [1, 2, 3, 4, 5].length; i++) {
+ const option=document.createElement("option");
+ option.textContent=i+1;
+ quantity.appendChild(option);
+}
 
 //-----sessionStorage--------------------------------------
 
 // bouton Ajout au panier
-    const ajoutPanier = document.createElement ("button");
-    ajoutPanier.textContent = "Ajouter au panier";
-    
-    ajoutPanier.addEventListener('click',function(){
-    	ajoutSessionStorage(produit)
-    });
+const ajoutPanier = document.createElement ("button");
+ajoutPanier.textContent = "Ajouter au panier";
+
+ajoutPanier.addEventListener('click',function(){
+ ajoutSessionStorage(produit)
+});
 
     //info du produit pour le storage
     function ajoutSessionStorage(data){
@@ -101,16 +101,14 @@ div.className="image";
         tab[resultat].quantity=parseInt(tab[resultat].quantity) + parseInt(objetTeddy.quantity)
       }else{//si le produit n'existe pas
       tab.push(objetTeddy);//ajouter le produit dans le tableau
-      }
-      sessionStorage.setItem('list_products', JSON.stringify(tab));
-    }else{
+    }
+    sessionStorage.setItem('list_products', JSON.stringify(tab));
+  }else{
     	// sessionStorage est vide;
     	sessionStorage.setItem('list_products', JSON.stringify([objetTeddy]));
     }
     alert("Ajout de " + teddy.name + " à votre panier")
-
-
-    }
+  }
 
 
 
