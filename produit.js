@@ -68,7 +68,6 @@ for (var i = 0; i < [1, 2, 3, 4, 5].length; i++) {
 }
 
 //-----sessionStorage--------------------------------------
-
 // bouton Ajout au panier
 const ajoutPanier = document.createElement ("button");
 ajoutPanier.textContent = "Ajouter au panier";
@@ -110,8 +109,6 @@ ajoutPanier.addEventListener('click',function(){
     alert("Ajout de " + teddy.name + " à votre panier")
   }
 
-
-
   //DOM
   div.appendChild(image);
   div.appendChild(name);
@@ -121,5 +118,4 @@ ajoutPanier.addEventListener('click',function(){
   div.appendChild(price);
   div.appendChild(ajoutPanier);
   document.getElementById("product_teddy").appendChild(div);
-
 }
