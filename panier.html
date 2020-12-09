@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<meta charset="utf-8" />
-	<script src="https://kit.fontawesome.com/84c6d20721.js" crossorigin="anonymous"></script>
-	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-	<meta name="description" content="Vente d'oursons en peluche" />
-	<link rel="stylesheet" href="style.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <meta charset="utf-8" />
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <meta name="description" content="Vente d'oursons en peluche" />
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 </head>
 
 <body>
+  <!----------------------------Barre de navigation-------------------------------------->
   <nav>
     <label class="logo">Orinoco</label>
     <ul>
@@ -19,20 +19,16 @@
     </ul>
     <label id="icon"><i class="fas fa-bars"></i></label>
   </nav>
-
-
-
+  <!-------------------------------Contenu panier------------------------------------------------->
   <main>
     <h2>Contenu de votre panier</h2>
-    <section id= "content_table">
-
+    <section id="content_table">
     </section>
 
-    <section id= "prix_total">
-
+    <section id="prix_total">
     </section>
-
-    <section id="formulaire" >
+    <!-------------------------------Formulaire------------------------------------------------->
+    <section id="formulaire">
       <h3>Pour valider la commande, merci de remplir ce formulaire</h3>
       <form id="form" method="post">
 
@@ -55,22 +51,21 @@
 
       </form>
     </section>
-
-  </main> 
-
-
-
+  </main>
+  <!-------------------------------Footer------------------------------------------------->
   <footer>
-
     <div class="footer">
       <p class="jaune"><i class="fas fa-lock"></i> Paiement Sécurisé</p>
-      <a href="#"><p><span class="jaune">Mentions légales</span></p></a>
-      <a href="mailto:exemple@gmail.com"><p><span class="jaune">Contactez-nous</span></p></a>
+      <a href="#">
+        <p><span class="jaune">Mentions légales</span></p>
+      </a>
+      <a href="mailto:exemple@gmail.com">
+        <p><span class="jaune">Contactez-nous</span></p>
+      </a>
     </div>
-
   </footer>
-
-
+  <!--------------------------------------------------------------------------------------->
 </body>
 <script src="panier.js"></script>
+
 </html>
