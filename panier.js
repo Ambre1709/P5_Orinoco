@@ -125,10 +125,9 @@ function btnRemoveItems(parent, product) {
 }
 //Supprimer l'article demandé
 function deleteItemCart(product) {
-
   let cart = JSON.parse(sessionStorage.getItem('list_products')) //parse pour convertir sous forme de tableau
   for (let [index, item] of cart.entries()) { //entries renvoie un tableau de [key, value] paires.
-    if (product.name === item.name && product.color === item.color) {
+    if (product.name === item.name && product.colors === item.colors) {
       cart.splice(index, 1) //splice permet de supprimer un élement du tableau
       sessionStorage.setItem('list_products', JSON.stringify(cart)) //mettre a jour le sessionStorage apres la suppression du produit
     }
@@ -177,7 +176,7 @@ function achat() {
   let emailValid = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
   let firstNameValid = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
   let lastNameValid = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
-  let addressValid = /^[a-zA-Z0-9]{5,}/;
+  let addressValid = /^([\w\s]+){5,}/;
   let cityValid = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
 
 

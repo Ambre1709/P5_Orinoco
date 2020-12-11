@@ -53,6 +53,7 @@ function afficherTeddyInfo(teddy) {
   for (let i = 0; i < teddy.colors.length; i++) {
     const option = document.createElement("option");
     option.textContent = teddy.colors[i];
+    option.value = teddy.colors[i];
     colors.appendChild(option);
   }
 
@@ -83,7 +84,7 @@ function afficherTeddyInfo(teddy) {
       image: data.imageUrl,
       name: data.name,
       colors: colors.value,
-      quantity: document.getElementById('quantity').value,
+      quantity: quantity.value,
       price: data.price,
     }
 
