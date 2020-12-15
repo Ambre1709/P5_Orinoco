@@ -1,10 +1,10 @@
 @font-face { /* Texte */
   font-family: 'didact_gothicregular';
-  src: url('fonts/didactgothic-regular-webfont.eot');
-  src: url('fonts/didactgothic-regular-webfont.eot?#iefix') format('embedded-opentype'),
-  url('fonts/didactgothic-regular-webfont.woff') format('woff'),
-  url('fonts/didactgothic-regular-webfont.ttf') format('truetype'),
-  url('fonts/didactgothic-regular-webfont.svg#didact_gothicregular') format('svg');
+  src: url('../fonts/didactgothic-regular-webfont.eot');
+  src: url('../fonts/didactgothic-regular-webfont.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/didactgothic-regular-webfont.woff') format('woff'),
+  url('../fonts/didactgothic-regular-webfont.ttf') format('truetype'),
+  url('../fonts/didactgothic-regular-webfont.svg#didact_gothicregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -16,7 +16,7 @@
 }
 /*Barre de navigation*/
 nav{
-  height: 80px;
+  height: 90px;
   width: 100%;
   background-color: #130f3c;
 
@@ -24,7 +24,7 @@ nav{
 label.logo{
   font-size: 2em;
   padding: 0 100px;
-  line-height: 80px;
+  line-height: 95px;
   color: white;
 }
 label.logo:hover{
@@ -37,7 +37,7 @@ nav ul{
 nav li{
   display: inline-block;
   margin: 0 8px;
-  line-height: 80px;
+  line-height: 95px;
 }
 nav a{
   color: white;
@@ -57,7 +57,7 @@ nav #icon{
   font-size: 30px;
   float: right;
   margin-right: 40px;
-  line-height: 80px;
+  line-height: 95px;
   cursor: pointer;
   display: none;
 }
